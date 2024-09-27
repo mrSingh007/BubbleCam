@@ -1,0 +1,27 @@
+/* styles.css */
+
+/* Add styles here to customize the appearance of your app */
+body {
+  margin: 0;
+  background-color: transparent;
+  -webkit-app-region: drag;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+}
+
+.video-container {
+  width: 230px; /* Set the width of the container */
+  height: 230px; /* Set the height of the container */
+  overflow: hidden; /* Hide overflow to keep it circular */
+  border-radius: 50%; /* Make the container circular */
+  border: 1px solid #27bd99;
+}
+
+#video {
+  width: 400px; /* Full width of the container */
+  height: auto; /* Maintain aspect ratio */
+  transform: scaleX(-1);
+  margin-left: -66px;
+  margin-top: -45px; /* adjust these to move image up/down right/left */
+}
