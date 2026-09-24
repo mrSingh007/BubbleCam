@@ -96,8 +96,8 @@ DMG and Windows NSIS. Windows behavior still needs manual verification.
 
 ## Install
 
-This is a source-only repository; no prebuilt installers or releases are provided.
-To install the app:
+No signed releases are provided. GitHub Actions retains unsigned CI installers
+for seven days in each successful workflow run's artifacts. To build locally:
 
 1. Clone the repository and enter its directory as shown above.
 2. Run `npm ci` to install dependencies.
@@ -132,6 +132,26 @@ npm test
 Tests cover camera startup, permission and device errors, playback failure,
 and stream cleanup, including permission resolving after the window closes.
 They use browser mocks and do not access your camera.
+
+### Continuous integration
+
+[CI](.github/workflows/ci.yml) runs when a pull request targeting `main` is
+opened, updated, or reopened, and on every push to `main`, including merges.
+It can also be started manually from the Actions tab. Each platform job uses
+Node.js 22 and `npm ci`, runs the tests, then builds installers: macOS DMGs
+for Apple silicon and Intel, and a Windows x64 NSIS installer. Failed tests
+prevent packaging in that job. Superseded PR runs are cancelled.
+
+CI installers are unsigned and retained for seven days; CI does not publish
+releases. GitHub Actions dependencies are pinned to commit hashes and checked
+weekly by Dependabot.
+
+To enforce validation before merging, configure a GitHub branch ruleset for
+`main` to require pull requests, up-to-date branches, and both status checks:
+`Test and build (macOS)` and `Test and build (Windows)`. The workflow itself
+does not enable branch protection. Post-merge runs verify the integrated branch.
+
+### Manual checks
 
 After building and installing, test on your operating system:
 
