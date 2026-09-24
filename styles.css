@@ -11,6 +11,7 @@ body {
 }
 
 .video-container {
+  position: relative;
   width: 230px; /* Set the width of the container */
   height: 230px; /* Set the height of the container */
   overflow: hidden; /* Hide overflow to keep it circular */
@@ -19,9 +20,20 @@ body {
 }
 
 #video {
-  width: 400px; /* Full width of the container */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transform: scaleX(-1);
-  margin-left: -66px;
-  margin-top: -45px; /* adjust these to move image up/down right/left */
+}
+
+#camera-status {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 40px 25px;
+  box-sizing: border-box;
+  background: #172522;
+  color: white;
+  font: 14px/1.5 system-ui, sans-serif;
+  text-align: center;
 }

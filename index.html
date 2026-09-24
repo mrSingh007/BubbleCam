@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
@@ -8,14 +8,14 @@
       content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
     />
     <link href="./styles.css" rel="stylesheet" />
-    <title></title>
+    <title>BubbleCam</title>
   </head>
   <body>
     <div class="video-container">
-      <video id="video" autoplay></video>
+      <video id="video" autoplay muted playsinline aria-label="Camera preview"></video>
+      <p id="camera-status" role="status">Starting camera…</p>
     </div>
 
-    <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
   </body>
 </html>

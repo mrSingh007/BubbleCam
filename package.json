@@ -1,21 +1,35 @@
 {
-  "name": "camera-app",
+  "name": "bubblecam",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "An always-on-top circular camera overlay for tutorials and screen recordings.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "test": "node --test",
+    "build": "electron-builder",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "io.github.mrsingh007.bubblecam",
+    "mac": {
+      "target": "dmg",
+      "extendInfo": {
+        "NSCameraUsageDescription": "Show your camera preview in a floating window."
+      }
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "productName": "BubbleCam"
   },
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "camera app"
   ],
   "author": "GitHub",
-  "license": "CC0-1.0",
+  "license": "MIT",
   "devDependencies": {
-    "electron": "^32.1.2"
+    "electron": "^32.1.2",
+    "electron-builder": "^25.0.5"
   }
 }
